@@ -1,7 +1,7 @@
 /*
-* Timesheets
+* Leptodon-starter
 *
-* Copyright (C) 2023-2025 Open Analytics NV
+* Copyright (C) 2025-2026 Open Analytics NV
 *
 * ===========================================================================
 *
@@ -17,7 +17,6 @@
 * You should have received a copy of the Apache License along with this program.
 * If not, see <http://www.apache.org/licenses/>
 */
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
