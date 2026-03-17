@@ -358,7 +358,7 @@ dependencies = [
 
 [[package]]
 name = "codegen"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "leptodon",
 ]
@@ -1249,9 +1249,9 @@ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
 name = "leptodon"
-version = "0.1.0"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b546fca110be9e682230232e8f8837ecb726f53e20afa363f38f4c88f20f5c51"
+checksum = "4c4543100e69079fafa2db510aab3fb31055657867376a42a66d8b2de89cda4c"
 dependencies = [
  "base64",
  "cfg-if",
@@ -1268,9 +1268,9 @@ dependencies = [
 
 [[package]]
 name = "leptodon-proc-macros"
-version = "0.1.0"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d68ca0b6da4b1495355c4ab3153fccd18d9bc547aa0c2bcf2e7e7843e05ebdfa"
+checksum = "a257f71bf12978512bd30671afca1d56703fd727f5bbca23952157c6d173f445"
 dependencies = [
  "comrak",
  "proc-macro2",

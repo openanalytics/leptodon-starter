@@ -15,7 +15,6 @@
 //
 // You should have received a copy of the Apache License along with this program.
 // If not, see <http://www.apache.org/licenses/>
-use leptos::prelude::*;
 use leptodon::button::{Button, ButtonAppearance};
 use leptodon::darkmode::ThemeSelector;
 use leptodon::icon;
@@ -23,6 +22,7 @@ use leptodon::navbar::NavbarEndChildren;
 use leptodon::navbar::NavbarEntries;
 use leptodon::navbar::SideBarLink;
 use leptodon::navbar::SideNavbar;
+use leptos::prelude::*;
 use leptos_meta::MetaTags;
 use leptos_meta::Stylesheet;
 use leptos_meta::Title;
@@ -61,7 +61,7 @@ pub fn RouteShell() -> impl IntoView {
         <main>
             <SideNavbar>
                 <NavbarEntries slot:entries>
-                    <li><SideBarLink href="home" icon=icon::HomeIcon()>Home</SideBarLink></li>
+                    <li><SideBarLink href="/" icon=icon::HomeIcon()>Home</SideBarLink></li>
                     <li><SideBarLink href="test" icon=icon::InfoIcon()>Info</SideBarLink></li>
                 </NavbarEntries>
                 <NavbarEndChildren slot:end>
@@ -79,14 +79,14 @@ pub fn RouteShell() -> impl IntoView {
 #[component]
 pub fn App() -> impl IntoView {
     provide_meta_context();
-    
+
     view! {
         <Stylesheet href="/pkg/starter.css"/>
 
         <Router>
             <Routes fallback=|| "Page not found.">
                 <ParentRoute path=StaticSegment("/") view=RouteShell>
-                    <Route path=StaticSegment("/home") view=Home/>
+                    <Route path=StaticSegment("/") view=Home/>
                     <Route path=StaticSegment("/test") view=Test/>
                 </ParentRoute>
             </Routes>
@@ -116,5 +116,14 @@ fn Test() -> impl IntoView {
                 <Button>Github</Button>
             </div>
         </main>
+    }
+}
+
+#[cfg(test)]
+mod test {
+
+    #[test]
+    fn mock_test() {
+        assert!("four".len() == 4);
     }
 }

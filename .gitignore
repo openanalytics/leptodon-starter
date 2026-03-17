@@ -1,4 +1,7 @@
 node_modules
 target
 .tailwind
-
+.devenv*
+.direnv
+reports
+test-results
