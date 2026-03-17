@@ -20,7 +20,7 @@ The starter should now be available on [http://localhost:3000](http://localhost:
 5. Run `direnv allow` to enable [direnv](https://direnv.com/) in case you use NixOS with flakes.
     - direnv is configured via `.envrc`, `flake.nix` and `flake.lock`.
 6. Run `cd end2end; direnv allow` to enable the Playwright devenv, you may need to [install devenv](https://devenv.sh/getting-started/).
-    - `npm install`. You also need to install Playwright here.
+    - Run `npm install` (since you also need to install Playwright here).
 7. Run `playwright test` to execute the tests.
 8. Run `cargo install --locked cargo-make` to enable [Makefile.toml support](https://sagiegurari.github.io/cargo-make/), some useful commands include:
    - Run `cargo make mimic-ci` for a suite of checks your CI would run.
