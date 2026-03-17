@@ -1,11 +1,11 @@
 # Leptodon starter
-This is a template repository to get started with [leptos](https://github.com/leptos-rs/leptos) + [leptodon](https://github.com/openanalytics/leptodon) inside an axum SSR environment.
+This is a template repository to get started with [leptos](https://github.com/leptos-rs/leptos) + [leptodon](https://github.com/openanalytics/leptodon) inside an [axum](https://github.com/tokio-rs/axum) SSR environment.
 
 ## Getting Started
 1. Click the green `Use this template` button and create a repository using this template.
 2. Clone your repository.
-3. Rename to your own project-name: `rg -l starter ./ | xargs sed -i 's/starter/yourprojectname/g'` (may need to [install ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)).
-4. Install cargo-leptos: `cargo install --locked cargo-leptos`.
+3. Rename the project to your liking: `rg -l starter ./ | xargs sed -i 's/starter/yourprojectname/g'` (may need to [install ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)).
+4. Install [cargo-leptos](https://github.com/leptos-rs/cargo-leptos): `cargo install --locked cargo-leptos`.
 5. [Optional steps](#optional-steps).
 6. Run with: `cargo leptos serve`.
 
