@@ -39,7 +39,7 @@ cfg_if! {
             Registry::default()
                  .with(ForestLayer::default().with_filter(
                     EnvFilter::try_from_default_env()
-                        .or_else(|_| EnvFilter::try_new("holidays=info,tower_http=info"))
+                        .or_else(|_| EnvFilter::try_new("starter=info,tower_http=info"))
                         .unwrap(),
                  ))
                  .init();
