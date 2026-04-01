@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: {
     files: [
@@ -10,7 +12,29 @@ module.exports = {
     ],
   },
   darkMode: "selector",
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin"),
+    plugin(function({ addUtilities, addComponents, e, prefix, config }) {
+      const newUtilities = {
+        '.horizontal-tb': {
+          writingMode: 'horizontal-tb',
+        },
+        '.vertical-rl': {
+          writingMode: 'vertical-rl'
+        },
+        '.vertical-lr': {
+          writingMode: 'vertical-lr'
+        },
+        '.text-mixed': {
+          textOrientation: 'mixed'
+        },
+        '.text-upright': {
+          textOrientation: 'upright'
+        }
+      }
+      addUtilities(newUtilities)
+    })
+  ],
   theme: {
     colors: {
       "oa-blue-lighter": "#5bb8dc",
@@ -24,6 +48,12 @@ module.exports = {
       "oa-docs-blue": "#30638e",
       "codeblock-light": "#fafdff",
       "codeblock-dark": "#04121B",
+      success: "var(--success)",
+      "success-soft": "var(--success-soft)",
+      warning: "var(--warning)",
+      "warning-soft": "var(--warning-soft)",
+      danger: "var(--danger)",
+      "danger-soft": "var(--danger-soft)",
     },
     extend: {
       aria: {

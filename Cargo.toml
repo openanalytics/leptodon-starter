@@ -40,11 +40,11 @@ console_error_panic_hook = "0.1"
 leptos = { version = "0.8.17", features = ["rkyv", "tracing"] }
 leptos_axum = { version = "0.8.8", optional = true }
 leptos_meta = { version = "0.8.6" }
-leptos_router = { version = "0.8.12" }
+leptos_router = { version = "0.8.13" }
 
 wasm-bindgen = { version = "=0.2.108", optional = true }
 
-leptodon = { version = "1.0.0", default-features = false, features = ["leptos"] }
+leptodon = { version = "1.1.0", default-features = false, features = [] }
 leptos-struct-table = { version = "0.18", features = ["chrono"] }
 
 axum-extra = { version = "0.12.5", optional = true, features = ["cookie"] }
@@ -70,7 +70,6 @@ ssr = [
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
-    "leptodon/leptos",
     "leptodon/ssr",
     "dep:leptos_axum",
     "dep:tokio",
@@ -88,12 +87,10 @@ ssr = [
 hydrate = [
     "leptos/hydrate",
     "dep:wasm-bindgen",
-    "leptodon/leptos",
     "leptodon/hydrate"
 ]
 csr = [
     "leptos/csr",
-    "leptodon/leptos",
     "leptodon/csr"
 ]
 tower = ["dep:tower"]
