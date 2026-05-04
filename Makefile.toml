@@ -28,31 +28,10 @@ command = "cargo"
 args = ["nextest", "run"]
 
 [tasks.integration-tests]
-cwd = "."
-script = '''
-#!/bin/sh
-set +e
-cargo leptos build --precompress --release;
-target/release/starter &
-
-echo "Up and running";
-cd end2end;
-npm install;
-
-# This script supports nixos with devenv or ubuntu:24 due to playwright.
-if command -v devenv >/dev/null 2>&1
-then
-    CI=1 devenv shell playwright test;
-else
-    npx playwright install-deps;
-    npx playwright install;
-    CI=1 npx playwright test;
-fi
-
-# Kills whatever this script spawned
-kill $! && echo "killed server";
-
-'''
+workspace = false
+cwd = "./"
+command = "cargo"
+args = ["leptos", "end-to-end", "--precompress", "--release"]
 
 [tasks.tests]
 run_task = { name = [

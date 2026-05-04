@@ -4,4 +4,4 @@ version = "1.0.0"
 edition = "2024"
 
 [dependencies]
-leptodon = { version = "1.0.0", default-features = false, features = [] }
+leptodon = { version = "1.3.0", default-features = false, features = [] }

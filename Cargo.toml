@@ -30,24 +30,24 @@ debug = 2
 http = "1"
 tower = { version = "0.5.3", optional = true }
 tower-http = { version = "0.6.8", features = ["fs", "trace"], optional = true }
-axum = { version = "0.8.8", optional = true, features = ["macros"] }
+axum = { version = "0.8.9", optional = true, features = ["macros"] }
 
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 
 console_log = "1"
 console_error_panic_hook = "0.1"
 
-leptos = { version = "0.8.17", features = ["rkyv", "tracing"] }
-leptos_axum = { version = "0.8.8", optional = true }
+leptos = { version = "0.8.19", features = ["rkyv", "tracing"] }
+leptos_axum = { version = "0.8.9", optional = true }
 leptos_meta = { version = "0.8.6" }
 leptos_router = { version = "0.8.13" }
 
-wasm-bindgen = { version = "=0.2.108", optional = true }
+wasm-bindgen = { version = "=0.2.117", optional = true }
 
-leptodon = { version = "1.1.0", default-features = false, features = [] }
+leptodon = { version = "1.3.0", default-features = false, features = [] }
 leptos-struct-table = { version = "0.18", features = ["chrono"] }
 
-axum-extra = { version = "0.12.5", optional = true, features = ["cookie"] }
+axum-extra = { version = "0.12.6", optional = true, features = ["cookie"] }
 
 regex = { version = "1.12", optional = true }
 dateparser = { version = "0.2.1", optional = true }
@@ -130,7 +130,7 @@ site-addr = "127.0.0.1:3000"
 reload-port = 3001
 
 # [Optional] Command to use when running end2end tests. It will run in the end2end dir.
-end2end-cmd = "npx playwright test --ui"
+end2end-cmd = "sh -C ci-test-launch.sh"
 end2end-dir = "end2end"
 browserquery = "defaults"
 
