@@ -17,12 +17,9 @@
 // You should have received a copy of the Apache License along with this program.
 // If not, see <http://www.apache.org/licenses/>
 
-use cfg_if::cfg_if;
-
 // boilerplate to run in different modes
-cfg_if! {
-    if #[cfg(feature = "ssr")] {
-
+cfg_select! {
+    feature = "ssr" => {
         #[tokio::main]
         async fn main() {
             use axum::Router;
@@ -30,19 +27,21 @@ cfg_if! {
             use leptos::prelude::*;
             use leptos_axum::{LeptosRoutes, generate_route_list};
             use starter::app::*;
-            use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, Registry};
-            use tracing_subscriber::EnvFilter;
             use tower_http::trace::TraceLayer;
             use tracing_forest::ForestLayer;
+            use tracing_subscriber::EnvFilter;
             use tracing_subscriber::Layer;
+            use tracing_subscriber::{Registry, layer::SubscriberExt, util::SubscriberInitExt};
 
             Registry::default()
-                 .with(ForestLayer::default().with_filter(
-                    EnvFilter::try_from_default_env()
-                        .or_else(|_| EnvFilter::try_new("starter=info,tower_http=info"))
-                        .unwrap(),
-                 ))
-                 .init();
+                .with(
+                    ForestLayer::default().with_filter(
+                        EnvFilter::try_from_default_env()
+                            .or_else(|_| EnvFilter::try_new("starter=info,tower_http=info"))
+                            .unwrap(),
+                    ),
+                )
+                .init();
 
             let conf = get_configuration(None).unwrap();
             let addr = conf.leptos_options.site_addr;
@@ -68,8 +67,8 @@ cfg_if! {
                 .await
                 .unwrap();
         }
-
-    } else {
+    }
+    _ => {
         pub fn main() {
             // no client-side main function
             // unless we want this to work with e.g., Trunk for pure client-side testing

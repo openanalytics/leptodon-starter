@@ -11,19 +11,18 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         # Read the file relative to the flake's root
-        overrides = (builtins.fromTOML (builtins.readFile (self + "/rust-toolchain.toml")));
-        libPath = with pkgs; lib.makeLibraryPath [
-          # load external libraries that you need in your rust project here
-        ];
+        overrides = (fromTOML (builtins.readFile (self + "/rust-toolchain.toml")));
       in
       {
         devShells.default = pkgs.mkShell rec {
           nativeBuildInputs = [ pkgs.pkg-config ];
           buildInputs = with pkgs; [
-            openssl
             clang
             llvmPackages.bintools
             rustup
+            cargo-leptos
+            wasm-bindgen-cli_0_2_127
+            binaryen
           ];
 
           RUSTC_VERSION = overrides.toolchain.channel;
@@ -37,7 +36,7 @@
           '';
 
           # Add precompiled library to rustc search path
-          RUSTFLAGS = (builtins.map (a: ''-L ${a}/lib'') [
+          RUSTFLAGS = (map (a: ''-L ${a}/lib'') [
             # add libraries here (e.g. pkgs.libvmi)
           ]);
 
@@ -46,7 +45,7 @@
           # Add glibc, clang, glib, and other headers to bindgen search path
           BINDGEN_EXTRA_CLANG_ARGS =
           # Includes normal include path
-          (builtins.map (a: ''-I"${a}/include"'') [
+          (map (a: ''-I"${a}/include"'') [
             # add dev libraries here (e.g. pkgs.libvmi.dev)
             pkgs.glibc.dev
           ])
