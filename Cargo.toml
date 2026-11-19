@@ -6,7 +6,7 @@ edition = "2024"
 resolver = "2"
 
 [lib]
-name = "starter"
+name = "starter_lib"
 crate-type = ["cdylib", "rlib"]
 
 [profile.release]
@@ -49,9 +49,9 @@ leptos-struct-table = { version = "0.19", features = ["chrono"] }
 
 axum-extra = { version = "0.12.6", optional = true, features = ["cookie"] }
 
-regex = { version = "1.13.1", optional = true }
+regex = { version = "1.13.2", optional = true }
 thiserror = "2.0.21"
-log = "0.4"
+log = { version = "0.4", optional = true }
 chrono = { version = "0.4.45", features = ["serde"] }
 
 anyhow = { version = "1.0.104", optional = true }
@@ -63,12 +63,13 @@ tracing-subscriber = { version = "0.3.23", features = ["env-filter"], optional =
 tracing-forest = { version = "0.3.1", features = ["tokio", "smallvec", "ansi"], optional = true }
 
 [features]
-default = ["ssr"]
+default = []
 ssr = [
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
     "leptodon/ssr",
+    "dep:log",
     "dep:leptos_axum",
     "dep:tokio",
     "dep:axum",
@@ -85,6 +86,7 @@ hydrate = [
     "leptos/hydrate",
     "leptodon/hydrate",
     "dep:wasm-bindgen",
+    "dep:log",
     "dep:console_error_panic_hook",
     "dep:console_log"
 ]

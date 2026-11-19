@@ -26,7 +26,7 @@ cfg_select! {
             use leptos::logging::log;
             use leptos::prelude::*;
             use leptos_axum::{LeptosRoutes, generate_route_list};
-            use starter::app::*;
+            use starter_lib::app::*;
             use tower_http::trace::TraceLayer;
             use tracing_forest::ForestLayer;
             use tracing_subscriber::EnvFilter;
@@ -53,7 +53,7 @@ cfg_select! {
             let app = Router::new()
                 .leptos_routes(&leptos_options, routes, {
                     let leptos_options = leptos_options.clone();
-                    move || starter::app::shell(leptos_options.clone())
+                    move || starter_lib::app::shell(leptos_options.clone())
                 })
                 .fallback(leptos_axum::file_and_error_handler(shell))
                 .with_state(leptos_options)
@@ -75,7 +75,7 @@ cfg_select! {
             // see lib.rs for hydration function instead
 
             use leptos::mount::mount_to_body;
-            use overview_lib::app::App;
+            use starter_lib::app::App;
 
             mount_to_body(App)
         }

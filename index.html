@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Add a plain CSS file: see https://trunk-rs.github.io/trunk/guide/assets/#css -->
+  <!-- If using Tailwind with Leptos CSR, see https://trunk-rs.github.io/trunk/guide/assets/#tailwind instead-->
+  <link data-trunk rel="css" href="style/output.css" />
+
+  <!-- Include favicon in dist output: see https://trunk-rs.github.io/trunk/guide/assets/#icon -->
+  <link data-trunk rel="icon" href="assets/logo.svg" />
+
+  <!-- include support for `wasm-bindgen --weak-refs` - see: https://rustwasm.github.io/docs/wasm-bindgen/reference/weak-references.html -->
+  <link data-trunk rel="rust" data-wasm-opt="z" data-weak-refs data-target-name="starter" />
+</head>
+
+<body></body>
+
+</html>
